@@ -64,10 +64,10 @@ const Projects = () => {
                                 <div className="flex justify-between items-start mb-4">
                                     <Folder className="w-10 h-10 text-ghost-accent opacity-80" />
                                     <div className="flex gap-4">
-                                        <a href={project.github} className="text-gray-400 hover:text-ghost-light transition-colors">
+                                        <a href={project.github} target='_blank' rel="noopener noreferrer" className="text-gray-400 hover:text-ghost-light transition-colors">
                                             <Github className="w-5 h-5" />
                                         </a>
-                                        <a href={project.link} className="text-gray-400 hover:text-ghost-light transition-colors">
+                                        <a href={project.link} target='_blank' rel="noopener noreferrer" className="text-gray-400 hover:text-ghost-light transition-colors">
                                             <ExternalLink className="w-5 h-5" />
                                         </a>
                                     </div>
