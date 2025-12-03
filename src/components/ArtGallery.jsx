@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ZoomIn } from 'lucide-react';
+import akaza from '../assets/sketches/akaza.png';
+import hinata from '../assets/sketches/hinata.jpeg';
+import naruto from '../assets/sketches/naruto.jpeg';
+import uchihaBros from '../assets/sketches/uchihaBros.jpeg';
 
 const ArtGallery = () => {
     const [selectedArt, setSelectedArt] = useState(null);
 
     const artworks = [
-        { id: 1, title: 'Akaza', type: 'Character Design', image: '/src/assets/sketches/akaza.png' },
-        { id: 2, title: 'Hinata', type: 'Character Design', image: '/src/assets/sketches/hinata.jpeg' },
-        { id: 3, title: 'Naruto', type: 'Character Design', image: '/src/assets/sketches/naruto.jpeg' },
-        { id: 4, title: 'Uchiha Bros', type: 'Character Design', image: '/src/assets/sketches/uchihaBros.jpeg' },
+        { id: 1, title: 'Akaza', type: 'Character Design', image: akaza },
+        { id: 2, title: 'Hinata', type: 'Character Design', image: hinata },
+        { id: 3, title: 'Naruto', type: 'Character Design', image: naruto },
+        { id: 4, title: 'Uchiha Bros', type: 'Character Design', image: uchihaBros },
     ];
 
     return (
