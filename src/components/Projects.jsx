@@ -7,7 +7,7 @@ const Projects = () => {
         {
             title: 'Lofi Digital Clock',
             description: 'A lofi themed digital clock which changes its theme according to the time of day.',
-            tags: ['React', "Tailwind CSS"],
+            tags: ['React', "TailwindCSS"],
             type: 'Web App',
             rarity: 'Common',
             link: 'https://abhijit-the-ghost.github.io/lofi-digital-clock',
@@ -16,7 +16,7 @@ const Projects = () => {
         {
             title: 'Aninfo',
             description: 'Anime information website with search functionality.',
-            tags: ['React', 'TypeScript', 'Tailwind CSS'],
+            tags: ['React', 'TypeScript', 'TailwindCSS'],
             type: 'Web App',
             rarity: 'Common',
             link: 'https://abhijit-the-ghost.github.io/aninfo',
