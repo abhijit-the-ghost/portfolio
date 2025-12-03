@@ -16,7 +16,7 @@ A story-driven, immersive personal portfolio website built with modern web techn
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/yourusername/ghost-portfolio.git
+    git clone https://github.com/abhijit-the-ghost/portfolio.git
     cd ghost-portfolio
     ```
 
