@@ -13,7 +13,7 @@ const messages = [
     { type: 'joke', text: '😄 Why do programmers prefer dark mode? Light attracts bugs!' },
     { type: 'joke', text: '🤓 There are 10 types of people: those who understand binary and those who don\'t.' },
     { type: 'joke', text: '☕ Java: Write once, debug everywhere.' },
-    { type: 'fact', text: '🎮 Ghost loves late-night coding sessions with NSFk qawwali' },
+    { type: 'fact', text: '🎮 Ghost loves late-night coding sessions with NFAK qawwali' },
     { type: 'fact', text: '🎨 Every pixel on this site was crafted with love!' },
     { type: 'fact', text: '✨ This website has more easter eggs than you think...' },
     { type: 'fact', text: '🌙 Ghost codes best between midnight and 4 AM.' },
