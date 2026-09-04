@@ -4,7 +4,9 @@ import { Home, Briefcase, User, Mail, Code } from "lucide-react";
 import { navLinks, siteConfig } from "../../lib/site";
 
 // Map icon names to Lucide icons
+// Update the iconMap to match your navLinks IDs
 const iconMap = {
+  hero: Home, // Add this if you have a hero section
   home: Home,
   projects: Briefcase,
   about: User,
