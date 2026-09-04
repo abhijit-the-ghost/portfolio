@@ -1,89 +1,63 @@
-# Ghost Portfolio 👻
+# Abhijit Guragain — Portfolio
 
-> "I code things that haunt the web."
+> Frontend Engineer @Insight Workshop | React · TypeScript · Tailwind · Zustand · TanStack Query
 
-A story-driven, immersive personal portfolio website built with modern web technologies. This project blends a professional developer portfolio with gaming aesthetics, hidden easter eggs, and interactive storytelling elements.
+A premium, data-driven portfolio website for a frontend engineer specializing in clean UI/UX systems, lightweight state management, and scalable web architectures. Built with Vite, React, JSX, and Tailwind CSS.
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
-- **Core**: [React](https://react.dev/) (v18) + [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **State Management**: React Context API
+- **Build**: Vite + npm
+- **Framework**: React (JSX)
+- **Styling**: Tailwind CSS (primary)
+- **Animation**: Framer Motion
+- **Icons**: Lucide React
+- **Data**: Centralized JSON/JS modules (`src/data/`) for projects, skills, experience, and site config
 
 ## 🚀 Getting Started
 
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/abhijit-the-ghost/portfolio.git
-    cd ghost-portfolio
-    ```
+```bash
+git clone https://github.com/abhijit-the-ghost/portfolio.git
+cd portfolio
+npm install
+npm run dev
+npm run build
+```
 
-2.  **Install dependencies**
-    ```bash
-    npm install
-    ```
-
-3.  **Run the development server**
-    ```bash
-    npm run dev
-    ```
-
-4.  **Build for production**
-    ```bash
-    npm run build
-    ```
-
-## 🌟 Key Features
-
-- **Immersive Hero Section**: Glitch effects and typing animations.
-- **Interactive Components**:
-  - **Skill Cards**: Hover effects and category filtering.
-  - **Project Showcase**: Detailed cards with links.
-  - **Game Stats**: A unique way to show personality traits.
-- **Theming**: Dark mode by default with neon accents.
-
-## 🕵️‍♂️ Easter Eggs (Spoilers!)
-
-This site is packed with hidden secrets. Can you find them all?
-
-### 1. The Ghost Companion 👻
-- A friendly ghost floats around the screen.
-- **Trigger**: He appears automatically.
-- **Interaction**: Click him for wisdom. Click him **3 times** to unlock a secret.
-
-### 2. The Secret Art Chamber 🎨
-- A hidden gallery of digital art.
-- **Unlock Methods**:
-  - Click the Ghost Companion 3 times.
-  - Double-click the Avatar in the "About" section.
-  - Find the hidden "glitch pixel" in the footer.
-  - Type the secret keyword: `ghostworld`.
-
-### 3. God Mode (Developer Override) 💻
-- A full-screen hacker interface.
-- **Trigger**: Enter the **Konami Code** on your keyboard:
-  `↑` `↑` `↓` `↓` `←` `→` `←` `→` `B` `A`
-- **Features**:
-  - Matrix Rain Intro sequence.
-  - Live System Stats (FPS, DOM nodes).
-  - Interactive Terminal.
-  - **Edit Mode**: Visual component inspector.
-
-## 📂 Project Structure
+## 🏗 Project Structure
 
 ```
 src/
-├── components/        # Main UI components (Hero, About, etc.)
-├── easter-eggs/       # Secret features (God Mode, Ghost, etc.)
-│   ├── GhostGodModeOverlay.jsx
-│   ├── MatrixRainCanvas.jsx
-│   └── ...
-├── assets/            # Images and static files
-└── App.jsx            # Main entry point
+├── data/               # Content modules (experience, skills, projects, site)
+├── sections/           # Page sections (Hero, About, Skills, Projects, Experience, Philosophy, Contact)
+├── components/         # Reusable UI (Navbar, Button, Footer, TerminalVisual)
+├── theme/              # Theme provider (light/dark with localStorage)
+├── assets/             # Images (profile, sketches removed for clean archive)
+└── App.jsx             # Entry point with section composition
 ```
+
+## ✨ Sections
+
+- **Hero** — Strong headline with interactive terminal visual
+- **About** — Bio, philosophy, and stats (3+ yrs, React/TS/Tailwind stack)
+- **Skills** — Organized tech stack (Frontend, State, Forms, Build)
+- **Projects** — Showcase cards + featured open-source library project
+- **Experience** — Insight Workshop (Mar 2023 – Present) with detailed bullet points
+- **Philosophy** — Development principles (clean code, accessibility, performance, maintainability)
+- **Contact** — Clean CTA with email, socials, and location
+
+## 🔍 SEO
+
+- Semantic HTML (proper heading hierarchy)
+- Meta title, description, keywords
+- Open Graph + Twitter Cards
+- Canonical URL + robots meta
+- Schema.org `Person` structured data
+- `lang="en"`, alt text, visible focus states, `prefers-reduced-motion` support
 
 ## 📄 License
 
-MIT License - feel free to use this code for your own portfolio!
+MIT — feel free to use for your own portfolio.
+
+---
+
+*Updated to match the premium developer portfolio spec: minimal, intentional design with data-driven content, no generative-AI placeholders, no fabricated history.*

@@ -5,27 +5,47 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abhijit Guragain | Frontend Developer & Digital Artist</title>
+
+  <!-- Set theme before paint to avoid a flash of the wrong theme -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        if (t === 'dark') document.documentElement.classList.add('dark');
+        document.documentElement.style.colorScheme = t;
+      } catch (e) { }
+    })();
+  </script>
+
+  <title>Abhijit Guragain — Frontend Engineer @Insight Workshop | React, TypeScript, Tailwind</title>
   <meta name="description"
-    content="Portfolio of Abhijit Guragain - Frontend Web Developer, Digital Artist, and Gamer. Blending code, art, and gaming into immersive web experiences." />
+    content="Abhijit Guragain — Frontend Engineer at Insight Workshop. React, TypeScript, Tailwind, Zustand, TanStack Query. Clean UI/UX systems, scalable web architectures. Based in Kathmandu, Nepal." />
   <meta name="keywords"
-    content="Abhijit Guragain, Frontend Developer, Digital Artist, Gamer, Portfolio, Web Development, React, Creative Developer" />
+    content="Abhijit Guragain, Frontend Engineer, Insight Workshop, React, TypeScript, Tailwind CSS, Zustand, TanStack Query, UI/UX, Web Architecture, Portfolio, Kathmandu" />
   <meta name="author" content="Abhijit Guragain" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://abhijitguragain.com.np/" />
-  <meta property="og:title" content="Abhijit Guragain | Frontend Developer & Digital Artist" />
+  <meta property="og:title" content="Abhijit Guragain — Frontend Engineer @Insight Workshop" />
   <meta property="og:description"
-    content="Explore the creative portfolio of Abhijit Guragain. Blending code, art, and gaming into immersive web experiences." />
-  <meta property="og:image" content="https://abhijitguragain.com/og-image.png" />
+    content="Frontend Engineer at Insight Workshop specializing in clean UI/UX systems, Zustand, TanStack Query, and scalable React architectures." />
+  <meta property="og:image" content="https://abhijitguragain.com.np/og-image.png" />
 
+  <link rel="canonical" href="https://abhijitguragain.com.np/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Abhijit Guragain","jobTitle":"Frontend Engineer","worksFor":{"@type":"Organization","name":"Insight Workshop"},"url":"https://abhijitguragain.com.np/","sameAs":["https://github.com/abhijit-the-ghost/","https://linkedin.com/in/abhijit-guragain/"],"knowsAbout":["React","TypeScript","Tailwind CSS","Zustand","TanStack Query","UI/UX Design","Web Architecture"]}
+  </script>
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://abhijitguragain.com.np/" />
-  <meta property="twitter:title" content="Abhijit Guragain | Frontend Developer & Digital Artist" />
+  <meta property="twitter:title" content="Abhijit Guragain — Frontend Engineer @Insight Workshop" />
   <meta property="twitter:description"
-    content="Explore the creative portfolio of Abhijit Guragain. Blending code, art, and gaming into immersive web experiences." />
+    content="Frontend Engineer at Insight Workshop specializing in clean UI/UX systems, Zustand, TanStack Query, and scalable React architectures." />
   <meta property="twitter:image" content="https://abhijitguragain.com.np/og-image.png" />
 </head>
 

@@ -3,43 +3,67 @@
 @tailwind utilities;
 
 @layer base {
+
+  /* LinkedIn light theme (default) */
+  :root {
+    --bg: 244 242 238;
+    /* #f4f2ee — warm gray canvas */
+    --surface: 255 255 255;
+    --content: 20 20 20;
+    --muted: 102 102 102;
+    --line: 224 223 219;
+    --accent: 10 102 194;
+    /* #0a66c2 — LinkedIn blue, paired with white text */
+    --accent-strong: 0 65 130;
+    /* #004182 — button hover */
+    --link: 10 102 194;
+  }
+
+  /* LinkedIn dark theme */
+  .dark {
+    --bg: 15 20 25;
+    --surface: 30 34 39;
+    --content: 233 233 231;
+    --muted: 160 160 160;
+    --line: 55 63 71;
+    --accent: 56 132 222;
+    --accent-strong: 96 165 250;
+    --link: 113 183 251;
+    /* #71b7fb — lighter blue stays readable on dark */
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-ghost-dark text-ghost-light font-sans overflow-x-hidden;
+    @apply bg-bg text-content font-sans antialiased;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-bold;
+  /* Anchored sections clear the fixed top bar */
+  section {
+    scroll-margin-top: 4.5rem;
   }
 
-  /* Custom Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-ghost-dark;
+    @apply bg-transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-ghost-muted rounded-full hover:bg-ghost-accent transition-colors;
-  }
-}
-
-@layer utilities {
-  .text-glow {
-    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    @apply bg-line rounded-full;
   }
 
-  .box-glow {
-    box-shadow: 0 0 20px rgba(112, 0, 255, 0.2);
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
