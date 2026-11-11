@@ -27,43 +27,55 @@ export default async function ProjectPage({ params }: { params: Params }) {
   if (!project) notFound();
 
   return (
-    <article className="mx-auto max-w-5xl px-6 py-16">
-      <Link href="/#projects" className="text-sm text-muted hover:text-content transition-colors">
-        ← All work
-      </Link>
+    <article className="px-6 py-16 md:py-24">
+      <div className="mx-auto max-w-5xl">
+        <Link href="/#projects" className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-text">
+          ← All work
+        </Link>
 
-      {project.status === 'in-progress' && (
-        <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted">
-          In progress
-        </p>
-      )}
-      <h1 className="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-content">
-        {project.title}
-      </h1>
-      <p className="mt-3 text-base sm:text-lg text-muted leading-relaxed">{project.summary}</p>
+        {project.status === 'in-progress' && (
+          <p className="mt-8 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-accent">
+            In progress
+          </p>
+        )}
+        <h1 className="mt-2 text-4xl font-extrabold leading-[1.1] tracking-tight text-text md:text-6xl">
+          {project.title}
+        </h1>
+        <p className="mt-4 max-w-2xl text-xl leading-[1.5] text-muted">{project.summary}</p>
 
-      <ul className="mt-6 flex flex-wrap gap-2" aria-label="Stack">
-        {project.stack.map((t) => (
-          <li key={t} className="rounded-full bg-content/5 px-2.5 py-0.5 text-xs font-medium text-muted">
-            {t}
-          </li>
-        ))}
-      </ul>
+        <ul className="mt-8 flex flex-wrap gap-2" aria-label="Stack">
+          {project.stack.map((t) => (
+            <li key={t} className="rounded-xl border border-border px-3 py-1.5 text-sm text-muted">
+              {t}
+            </li>
+          ))}
+        </ul>
 
-      {(project.links.live || project.links.code) && (
-        <div className="mt-6 flex gap-4">
-          {project.links.live && (
-            <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#0a66c2] hover:underline">
-              Live site ↗
-            </a>
-          )}
-          {project.links.code && (
-            <a href={project.links.code} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#0a66c2] hover:underline">
-              Source ↗
-            </a>
-          )}
-        </div>
-      )}
+        {(project.links.live || project.links.code) && (
+          <div className="mt-8 flex flex-wrap gap-3">
+            {project.links.live && (
+              <a
+                href={project.links.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 items-center rounded-xl bg-accent px-5 text-sm font-semibold text-[#0B0F14] transition-colors hover:bg-accent/85"
+              >
+                Live site →
+              </a>
+            )}
+            {project.links.code && (
+              <a
+                href={project.links.code}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 items-center rounded-xl border border-border px-5 text-sm font-semibold text-text transition-colors hover:border-accent/60"
+              >
+                Source →
+              </a>
+            )}
+          </div>
+        )}
+      </div>
     </article>
   );
 }

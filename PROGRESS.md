@@ -9,7 +9,7 @@ Branch: migrate/next-tsx (created, local only) Next version: **16.4.6** (Turbopa
 - [x] 2 Types/content
 - [x] 3 Components
 - [x] 4 Pages
-- [ ] 5 Design
+- [x] 5 Design
 - [ ] 6 SEO
 - [ ] 7 Perf/a11y
 - [ ] 8 Case studies
@@ -87,7 +87,7 @@ Answered 2026-11-11 (owner):
 
 ## Last report
 
-Phase 4 done 2026-11-11: layout.tsx (Inter + JetBrains Mono via next/font, header Navbar + Footer), page.tsx composes Hero→Projects→Skills→Experience→About→Contact (prompt order; legacy order replaced), /projects/[slug] static (generateStaticParams, dynamicParams rejected by cacheComponents → instant=false + notFound() in shell → real 404). Interim metadata (Phase 6 owns real SEO). No react-router anywhere. tsc+build green; routes: /, /_not-found, 3 project slugs (all static; [slug] shell = Partial Prerender). Dev verified: home 200 (9 mentions of Insight Workshop), /projects/lofi-digital-clock 200, bogus slug 404, dev log clean.
+Phase 5 done 2026-11-11: globals.css = spec tokens (bg/surface/border/text/muted/accent) + 12px radii + focus ring + type scale; DaisyUI v5 custom dark theme registered but emits NO components/builtin themes (hand-styled UI preserved). Reveal.tsx (fade+16px rise, 0.4s ease-out, once, optional 60ms stagger, no-op under prefers-reduced-motion). All components restyled; old LinkedIn skin gone (no gradients except hero glow, no glassmorphism). Experience now renders the anonymized bucket labels (Digital Registry · LMS · SMS). tsc+build green; / render 200, log clean. NOT pushed.
 
 Correction needed in workflow: `.github/workflows/deploy.yml` still uploads `./dist` (Vite) → Next builds to `out/` only with `output: 'export'`; decide at Phase 6 (needs owner approval).
 

@@ -1,33 +1,48 @@
+import Reveal from '@/components/Reveal';
 import { Building2, Cpu, Zap } from 'lucide-react';
 
-// Content adapted from legacy/src/sections/About.jsx; wording trimmed per owner "minimal and subtle and simple" (2026-11-11). `motion`/`siteConfig` imports dropped (unused).
+// Wording: minimal and subtle (owner). Content from legacy + owner decisions; stat tiles border/radius per spec.
 const About = () => (
-  <section id="about" className="py-16 relative">
-    <div className="mx-auto max-w-5xl px-6">
-      <div className="bg-surface border border-line rounded-2xl p-6 sm:p-10 shadow-sm">
-        <h2 className="text-xl font-bold text-content tracking-tight">About</h2>
-        <div className="mt-4 text-muted leading-relaxed space-y-3 text-sm sm:text-base">
-          <p>Frontend Engineer with 3+ years building responsive web applications with React and TypeScript. I focus on clean UI/UX and a maintainable frontend architecture.</p>
-          <p>At <strong className="text-content">Insight Workshop</strong>, I build client applications with React and TypeScript — turning complex product requirements into clear, usable interfaces.</p>
-          <h3 className="text-sm font-bold text-content mt-4 mb-2">Core Architecture Stack</h3>
-          <ul className="list-disc pl-5 space-y-0.5 text-sm">
-            <li><strong>Languages:</strong> TypeScript, JavaScript (ES6+)</li>
-            <li><strong>Frameworks & UI:</strong> React, Tailwind CSS, Shadcn UI, DaisyUI</li>
-            <li><strong>State & Data:</strong> Zustand, TanStack Query (React Query)</li>
-            <li><strong>Forms & Validation:</strong> React Hook Form, Zod</li>
-            <li><strong>Build & Runtime:</strong> Vite, Bun, Node.js</li>
-          </ul>
-          <h3 className="text-sm font-bold text-content mt-4 mb-2">What I’m Building</h3>
-          <p>I’m currently designing and open-sourcing a modular, copy-and-paste UI component library aimed at helping developers build clean, minimal interfaces without adding unnecessary bundle bloat.</p>
-          <p>Always open to connecting with fellow engineers, designers, and tech enthusiasts. Let’s build something clean.</p>
-        </div>
+  <section id="about" className="px-6 py-16 md:py-24">
+    <div className="mx-auto max-w-5xl">
+      <Reveal>
+        <h2 className="text-2xl font-semibold tracking-tight text-text">About</h2>
+      </Reveal>
 
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="rounded-xl bg-surface border border-line p-4"><h3 className="text-sm font-semibold text-content flex items-center gap-2"><Building2 className="h-4 w-4 text-[#0a66c2]" /> Current</h3><p className="text-xs text-muted mt-1">Insight Workshop · Frontend Engineer</p></div>
-          <div className="rounded-xl bg-surface border border-line p-4"><h3 className="text-sm font-semibold text-content flex items-center gap-2"><Cpu className="h-4 w-4 text-[#0a66c2]" /> Stack</h3><p className="text-xs text-muted mt-1">React · TypeScript · Tailwind · Zustand</p></div>
-          <div className="rounded-xl bg-surface border border-line p-4"><h3 className="text-sm font-semibold text-content flex items-center gap-2"><Zap className="h-4 w-4 text-[#0a66c2]" /> Building</h3><p className="text-xs text-muted mt-1">Modular UI library — clean, minimal, copy-paste</p></div>
+      <Reveal delay={0.06}>
+        <div className="mt-8 rounded-xl border border-border bg-surface p-6 sm:p-10">
+          <div className="space-y-3 text-base leading-[1.6] text-muted">
+            <p>Frontend Engineer with 3+ years building responsive web applications with React and TypeScript. I focus on clean UI/UX and a maintainable frontend architecture.</p>
+            <p>At <strong className="font-semibold text-text">Insight Workshop</strong>, I build client applications with React and TypeScript — turning complex product requirements into clear, usable interfaces.</p>
+            <h3 className="pt-2 font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">Core architecture stack</h3>
+            <ul className="list-disc space-y-1 pl-5 text-sm">
+              <li><strong className="text-text">Languages:</strong> TypeScript, JavaScript (ES6+)</li>
+              <li><strong className="text-text">Frameworks & UI:</strong> React, Tailwind CSS, Shadcn UI, DaisyUI</li>
+              <li><strong className="text-text">State & Data:</strong> Zustand, TanStack Query (React Query)</li>
+              <li><strong className="text-text">Forms & Validation:</strong> React Hook Form, Zod</li>
+              <li><strong className="text-text">Build & Runtime:</strong> Vite, Bun, Node.js</li>
+            </ul>
+            <h3 className="pt-2 font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">What I’m building</h3>
+            <p>I’m currently designing and open-sourcing a modular, copy-and-paste UI component library aimed at helping developers build clean, minimal interfaces without adding unnecessary bundle bloat.</p>
+            <p>Always open to connecting with fellow engineers, designers, and tech enthusiasts.</p>
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="rounded-xl border border-border bg-bg p-4">
+              <h3 className="flex items-center gap-2 text-sm font-semibold text-text"><Building2 className="h-4 w-4 text-accent" /> Current</h3>
+              <p className="mt-1.5 text-xs text-muted">Insight Workshop · Frontend Engineer</p>
+            </div>
+            <div className="rounded-xl border border-border bg-bg p-4">
+              <h3 className="flex items-center gap-2 text-sm font-semibold text-text"><Cpu className="h-4 w-4 text-accent" /> Stack</h3>
+              <p className="mt-1.5 text-xs text-muted">React · TypeScript · Tailwind · Zustand</p>
+            </div>
+            <div className="rounded-xl border border-border bg-bg p-4">
+              <h3 className="flex items-center gap-2 text-sm font-semibold text-text"><Zap className="h-4 w-4 text-accent" /> Building</h3>
+              <p className="mt-1.5 text-xs text-muted">Modular UI library — clean, minimal, copy-paste</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </Reveal>
     </div>
   </section>
 );

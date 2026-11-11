@@ -1,43 +1,50 @@
+import Reveal from '@/components/Reveal';
 import { skills } from '@/content/skills';
-import type { SkillGroup as SkillGroupType } from '@/content/types';
-
-// Renders the tiered model from src/content/skills.ts (Core / Working knowledge) — the old
-// levels-based groups (Frontend / State & Data / Forms / Build) no longer exist.
+import type { SkillGroup } from '@/content/types';
 
 type Props = {
   title: string;
   items: string[];
 };
 
-const tierTitle: Record<SkillGroupType['tier'], string> = {
+const tierTitle: Record<SkillGroup['tier'], string> = {
   core: 'Core',
   working: 'Working knowledge',
 };
 
 const SkillGroup = ({ title, items }: Props) => (
-  <div className="mb-6">
-    <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-muted mb-3">{title}</h3>
-    <div className="flex flex-wrap gap-2">
+  <div>
+    <h3 className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">{title}</h3>
+    <div className="mt-3 flex flex-wrap gap-2">
       {items.map((item) => (
-        <span key={item} className="rounded-lg border border-line bg-surface px-3 py-1.5 text-sm font-medium text-content hover:border-[#0a66c2]/40 transition-colors">{item}</span>
+        <span
+          key={item}
+          className="rounded-xl border border-border px-3 py-1.5 text-sm text-text transition-colors hover:border-accent/50"
+        >
+          {item}
+        </span>
       ))}
     </div>
   </div>
 );
 
 const Skills = () => (
-  <section id="skills" className="py-16 relative">
-    {/* owner WIP kept: px-6 removed from the inner container (legacy stash@{0}) */}
+  <section id="skills" className="px-6 py-16 md:py-24">
     <div className="mx-auto max-w-5xl">
-      <div className="bg-surface border border-line rounded-2xl p-6 sm:p-10 shadow-sm">
-        <h2 className="text-xl font-bold text-content tracking-tight">Skills</h2>
-        <p className="text-sm text-muted mt-1">Core architecture stack — languages, frameworks, state, forms, build.</p>
-        <div className="mt-6 grid md:grid-cols-2 gap-10">
-          {skills.map((group) => (
-            <SkillGroup key={group.tier} title={tierTitle[group.tier]} items={group.items} />
-          ))}
+      <Reveal>
+        <h2 className="text-2xl font-semibold tracking-tight text-text">Skills</h2>
+        <p className="mt-2 text-base text-muted">Core architecture stack — languages, frameworks, state, forms, build.</p>
+      </Reveal>
+
+      <Reveal delay={0.06}>
+        <div className="mt-8 rounded-xl border border-border bg-surface p-6 sm:p-8">
+          <div className="grid gap-8 md:grid-cols-2">
+            {skills.map((group) => (
+              <SkillGroup key={group.tier} title={tierTitle[group.tier]} items={group.items} />
+            ))}
+          </div>
         </div>
-      </div>
+      </Reveal>
     </div>
   </section>
 );

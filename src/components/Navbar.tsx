@@ -4,21 +4,27 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { navLinks, monogram } from '@/lib/site';
 
+// Spec §4: flat bar, 1px border, no glassmorphism, 12px radius, mono small-caps labels.
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav
-      className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-300 bg-transparent"
-    >
-      <div className="mx-auto w-full max-w-3xl h-14 flex items-center justify-center gap-3 relative">
-        <div className="hidden md:flex items-center gap-2 bg-surface/70 border border-line/50 rounded-full px-3 py-2 shadow-xl shadow-black/5 backdrop-blur-2xl">
-          <a href="#hero" className="grid h-7 w-7 place-items-center rounded-full bg-[#0a66c2] text-[11px] font-bold text-white" aria-label="Home">{monogram}</a>
+    <nav className="fixed inset-x-0 top-0 z-50 border-b border-border bg-surface">
+      <div className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between gap-4 px-6">
+        <a
+          href="#hero"
+          className="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-text"
+          aria-label="Home"
+        >
+          {monogram}
+        </a>
+
+        <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((l) => (
             <a
               key={l.id}
               href={`#${l.id}`}
-              className="rounded-full px-3 py-1.5 text-sm font-medium text-muted hover:text-content hover:bg-content/5 transition-colors"
+              className="rounded-xl px-3 py-1.5 text-sm text-muted transition-colors hover:bg-bg hover:text-text"
             >
               {l.name}
             </a>
@@ -27,8 +33,9 @@ const Navbar = () => {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden grid h-10 w-10 place-items-center rounded-full bg-surface/80 border border-line/50 text-content hover:bg-content/5 transition-colors shadow-lg ml-auto"
+          className="grid h-10 w-10 place-items-center rounded-xl border border-border text-text transition-colors hover:bg-bg md:hidden"
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileOpen}
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -40,15 +47,15 @@ const Navbar = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden overflow-hidden bg-surface/95 backdrop-blur-xl border-b border-line/60 rounded-b-3xl shadow-2xl absolute top-14 left-4 right-4"
+            className="overflow-hidden border-t border-border bg-surface md:hidden"
           >
-            <div className="px-6 py-4 space-y-3">
+            <div className="space-y-1 px-6 py-3">
               {navLinks.map((l) => (
                 <a
                   key={l.id}
                   href={`#${l.id}`}
                   onClick={() => setMobileOpen(false)}
-                  className="block text-sm font-medium text-content"
+                  className="block rounded-xl px-3 py-2 text-sm text-text transition-colors hover:bg-bg"
                 >
                   {l.name}
                 </a>
