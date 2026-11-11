@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { profile, bioShort } from "@/content/profile";
+import { siteUrl } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,10 +17,30 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-// Interim metadata (real SEO in Phase 6): name/title/description only — no OG/Twitter yet.
+const defaultTitle = `${profile.name} — Frontend Engineer`;
+
 export const metadata: Metadata = {
-  title: `${profile.name} — Frontend Engineer`,
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: defaultTitle,
+    template: `%s — ${profile.name}`,
+  },
   description: bioShort,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    title: defaultTitle,
+    description: bioShort,
+    siteName: profile.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: bioShort,
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

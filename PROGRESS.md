@@ -10,7 +10,7 @@ Branch: migrate/next-tsx (created, local only) Next version: **16.4.6** (Turbopa
 - [x] 3 Components
 - [x] 4 Pages
 - [x] 5 Design
-- [ ] 6 SEO
+- [x] 6 SEO
 - [ ] 7 Perf/a11y
 - [ ] 8 Case studies
 - [ ] 9 Cleanup
@@ -87,7 +87,9 @@ Answered 2026-11-11 (owner):
 
 ## Last report
 
-Phase 5 done 2026-11-11: globals.css = spec tokens (bg/surface/border/text/muted/accent) + 12px radii + focus ring + type scale; DaisyUI v5 custom dark theme registered but emits NO components/builtin themes (hand-styled UI preserved). Reveal.tsx (fade+16px rise, 0.4s ease-out, once, optional 60ms stagger, no-op under prefers-reduced-motion). All components restyled; old LinkedIn skin gone (no gradients except hero glow, no glassmorphism). Experience now renders the anonymized bucket labels (Digital Registry · LMS · SMS). tsc+build green; / render 200, log clean. NOT pushed.
+Phase 6 done 2026-11-11 (canonical www everywhere; apex keeps its host-level 301): layout.tsx metadata (metadataBase, default+%s template titles, alternates, OG/Twitter/siteName), home + [slug] generateMetadata (canonical per page), sitemap.xml (module-scope lastModified → static), robots.txt, Person JSON-LD on /, opengraph-image.tsx generated (next/og, dark card from profile.ts only) + twitter-image.tsx re-export. Verified in PRERENDERED HTML + start: title/canonical/og:*/twitter:*/JSON-LD all correct. Routes: all static except /projects/[slug] shell (Partial Prerender). og:image URLs use www origin. NOT pushed.
+
+PENDING OWNER DECISION (blocks deploy): output: 'export' + images.unoptimized for GitHub Pages (host: static-only — confirmed). See report for the next/image consequences. deploy.yml ./dist → ./out ready to flip on approval.
 
 Correction needed in workflow: `.github/workflows/deploy.yml` still uploads `./dist` (Vite) → Next builds to `out/` only with `output: 'export'`; decide at Phase 6 (needs owner approval).
 

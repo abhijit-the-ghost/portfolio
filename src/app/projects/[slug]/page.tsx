@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { projects } from '@/content/projects';
+import { siteUrl } from '@/lib/site';
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -18,7 +19,23 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
-  return { title: project.title, description: project.summary };
+  const url = `${siteUrl}/projects/${project.slug}`;
+  return {
+    title: project.title,
+    description: project.summary,
+    alternates: { canonical: `/projects/${project.slug}` },
+    openGraph: {
+      type: 'website',
+      url,
+      title: project.title,
+      description: project.summary,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: project.title,
+      description: project.summary,
+    },
+  };
 }
 
 export default async function ProjectPage({ params }: { params: Params }) {
