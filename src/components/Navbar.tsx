@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { navLinks, monogram } from '@/lib/site';
 
@@ -14,7 +13,7 @@ const Navbar = () => {
         <a
           href="#hero"
           className="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-text"
-          aria-label="Home"
+          aria-label="AG — home"
         >
           {monogram}
         </a>
@@ -41,29 +40,22 @@ const Navbar = () => {
         </button>
       </div>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden border-t border-border bg-surface md:hidden"
-          >
-            <div className="space-y-1 px-6 py-3">
-              {navLinks.map((l) => (
-                <a
-                  key={l.id}
-                  href={`#${l.id}`}
-                  onClick={() => setMobileOpen(false)}
-                  className="block rounded-xl px-3 py-2 text-sm text-text transition-colors hover:bg-bg"
-                >
-                  {l.name}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {mobileOpen && (
+        <div className="border-t border-border bg-surface md:hidden">
+          <div className="space-y-1 px-6 py-3">
+            {navLinks.map((l) => (
+              <a
+                key={l.id}
+                href={`#${l.id}`}
+                onClick={() => setMobileOpen(false)}
+                className="block rounded-xl px-3 py-2 text-sm text-text transition-colors hover:bg-bg"
+              >
+                {l.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

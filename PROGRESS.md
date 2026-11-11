@@ -11,7 +11,7 @@ Branch: migrate/next-tsx (created, local only) Next version: **16.4.6** (Turbopa
 - [x] 4 Pages
 - [x] 5 Design
 - [x] 6 SEO
-- [ ] 7 Perf/a11y
+- [x] 7 Perf/a11y
 - [ ] 8 Case studies
 - [ ] 9 Cleanup
 
@@ -87,7 +87,7 @@ Answered 2026-11-11 (owner):
 
 ## Last report
 
-Phase 6 done 2026-11-11 (canonical www everywhere; apex keeps its host-level 301): layout.tsx metadata (metadataBase, default+%s template titles, alternates, OG/Twitter/siteName), home + [slug] generateMetadata (canonical per page), sitemap.xml (module-scope lastModified → static), robots.txt, Person JSON-LD on /, opengraph-image.tsx generated (next/og, dark card from profile.ts only) + twitter-image.tsx re-export. Verified in PRERENDERED HTML + start: title/canonical/og:*/twitter:*/JSON-LD all correct. Routes: all static except /projects/[slug] shell (Partial Prerender). og:image URLs use www origin. NOT pushed.
+Phase 7 done 2026-11-11: measured with Edge as Lighthouse 13.6.0 via bunx (ephemeral, no dep added). Final (3 post-fix runs, mobile): performance 82/85/83, accessibility 100, best-practices 100, seo 100. Fixes applied: WCAG 2.5.3 monogram aria-label, removed framer-motion from Navbar (plain conditional render), Reveal → LazyMotion+domAnimation (unused JS 76→52 KiB). Target ≥90 perf NOT met — LCP 3.0s driven by framework runtime + 249KB hero jpg on simulated mobile CPU; remaining levers would violate the fixed design spec. CLS 0. Dev log clean. NOT pushed.
 
 PENDING OWNER DECISION (blocks deploy): output: 'export' + images.unoptimized for GitHub Pages (host: static-only — confirmed). See report for the next/image consequences. deploy.yml ./dist → ./out ready to flip on approval.
 
