@@ -9,10 +9,7 @@ export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
-// This route awaits params in the render path (its data IS the URL), so instant-navigation
-// validation is opted out — documented Next 16 escape hatch. The route still prerenders/streams.
-// Unknown slug → notFound() in the shell → real 404 status.
-export const instant = false;
+// Unknown slug → notFound(). Static via generateStaticParams above.
 
 type Params = Promise<{ slug: string }>;
 
