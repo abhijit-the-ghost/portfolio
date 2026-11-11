@@ -14,6 +14,7 @@ Branch: migrate/next-tsx (created, local only) Next version: **16.4.6** (Turbopa
 - [x] 7 Perf/a11y
 - [x] 8 Case studies
 - [x] 9 Cleanup
+- [x] 10 Deploy / static export
 
 ## Files to convert (filled by Phase 0, leaf components first)
 
@@ -88,15 +89,9 @@ Answered 2026-11-11 (owner):
 
 ## Last report
 
-Phase 9 done 2026-11-11 (cleanup) **plus the owner's modular→DSA-visualization reversal and §4 padding fix**:
-- legacy/ DELETED (zero runtime refs — only docs/comments mentioned it); tsconfig/eslint/.gitignore stale exclusions removed; package.json inert trustedDependencies/ignoreScripts dropped; README rewritten (stack, bun install, bun dev, build, folder layout; ⚠️ documents that deploy.yml still uploads ./dist and that output:'export' awaits owner go-ahead).
-- §4 layout spec → uniform 64px section padding (owner feedback after reviewing 1440px screenshot); all five sections + case-study page updated.
-- **Owner-requested reversal:** Modular UI Component Library REMOVED from projects (+ case-studies JSON + loader entries); About "What I'm building" + stat tile now point to DSA Visualization (owner README phrasing). DSA viz = current project.
-- **Owner's uncommitted edits left untouched and untouched by the commit:** src/app/page.tsx (About reordered above Projects) and src/content/skills.ts (TanStack Table → Core; Working knowledge expanded: Python, Django, PostgreSQL, Git, GitHub Actions, NGINX).
-- Rescue note: a PowerShell Set-Content pipeline double-encoded UTF-8 into 5 component files; recovered by git-restoring those 5 files to HEAD and re-applying the two intended edits with the edit tool. No other files affected; mojibake scan clean (no matches repo-wide).
-- Gates: tsc ✓ · build ✓ · eslint ✓. NOT pushed.
+Phase 9 cleanup (2026-11-11) + static-export chain (ce4a18c): legacy/ deleted; README rewritten; §4 uniform 64px padding; owner reversal Modular UI lib → DSA Visualization (About now credits DSA viz). Then static export: output: 'export', images.unoptimized (GitHub Pages = static, owner-confirmed). cacheComponents disabled (proves conflict with dynamic segment configs + output:export). force-static added to robots.ts, sitemap.ts, opengraph-image.tsx, twitter-image.tsx; instant=false removed from [slug] (route is static via generateStaticParams). deploy.yml path: ./dist → ./out. Next.js builds ONCE only (no SSR path — owner constraint). Favicon via src/app/icon.svg (GitHub's own AG SVG; scaffold favicon.ico removed). OG image now embeds meImage.jpg portrait via next/og. JSON-LD Person extended (image, worksFor, knowsAbout, full sameAs). Gates: tsc ✓ build ✓ bunx serve out :3000 ✓ OG image returns 395 KB PNG ✓ sitemap lists dsa-visualization ✓. NOT pushed.
 
-PENDING: output: 'export' + deploy.yml ./dist → ./out (owner go-ahead). Owner WIP: page.tsx, skills.ts (uncommitted).
+UNRELATED owner files left unstaged intentionally: src/app/page.tsx (About reordered — kept), src/content/skills.ts (TanStack Table in Core + Python/Django/PostgreSQL/Git/GitHub Actions/NGINX in Working).
 
 PENDING OWNER DECISION (blocks deploy): output: 'export' + images.unoptimized for GitHub Pages (host: static-only — confirmed). See report for the next/image consequences. deploy.yml ./dist → ./out ready to flip on approval.
 
