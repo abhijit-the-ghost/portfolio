@@ -7,8 +7,8 @@ Branch: migrate/next-tsx (created, local only) Next version: **16.4.6** (Turbopa
 - [x] 0 Audit
 - [x] 1 Scaffold
 - [x] 2 Types/content
-- [ ] 3 Components
-- [ ] 4 Pages
+- [x] 3 Components
+- [x] 4 Pages
 - [ ] 5 Design
 - [ ] 6 SEO
 - [ ] 7 Perf/a11y
@@ -63,6 +63,7 @@ NOT imported anywhere (delete candidates, don't convert): `src/App.css`, `src/as
 - tsconfig: `strict: true` (scaffold default) + exclude `legacy`; eslint ignores `legacy/**`.
 - `next-env.d.ts` committed (scaffold gitignores it; committing keeps `bunx tsc --noEmit` green on fresh clones).
 - Hosting: GitHub Pages via `.github/workflows/deploy.yml` (push to `main` → bun install → bun run build → upload `./dist` → deploy-pages). Custom domain serves at root; Vite `base: '/'` was correct.
+- **Phase 4 done:** `/projects/[slug]` awaits params in the render shell + `export const instant = false` (Next 16 + cacheComponents rejects `dynamicParams`; Suspense-streamed notFound() can only inject noindex — docs `loading.md#status-codes` — so shell-side notFound() gives a real 404). If cacheComponents is disabled at Phase 6 for static export, revisit the config.
 - Canonical host for Phase 6 metadata: `https://www.abhijitguragain.com.np/` (apex redirects there). `output: 'export'` almost certain (Pages is static) — owner confirmation + `next/image` consequences to be handled at Phase 6 before changing anything.
 - `deploy.yml` uploads `./dist`; Next static export writes `out/`. The workflow path must change when static export is enabled — needs owner approval (do not touch until confirmed).
 - CI uses `bun install --frozen-lockfile` → `bun.lock(b)` must be committed.
@@ -86,7 +87,7 @@ Answered 2026-11-11 (owner):
 
 ## Last report
 
-Phase 3 batches A+B done 2026-11-11 + owner decisions applied same day (commit after this edit): CodePen real URL wired (socials.ts iconFor + profile.ts), experience buckets renamed to Digital Registry / LMS / School Management System (bullets shared, listed once), minimal wording pass on About/profile/experience. tsc+build green. Not pushed.
+Phase 4 done 2026-11-11: layout.tsx (Inter + JetBrains Mono via next/font, header Navbar + Footer), page.tsx composes Hero→Projects→Skills→Experience→About→Contact (prompt order; legacy order replaced), /projects/[slug] static (generateStaticParams, dynamicParams rejected by cacheComponents → instant=false + notFound() in shell → real 404). Interim metadata (Phase 6 owns real SEO). No react-router anywhere. tsc+build green; routes: /, /_not-found, 3 project slugs (all static; [slug] shell = Partial Prerender). Dev verified: home 200 (9 mentions of Insight Workshop), /projects/lofi-digital-clock 200, bogus slug 404, dev log clean.
 
 Correction needed in workflow: `.github/workflows/deploy.yml` still uploads `./dist` (Vite) → Next builds to `out/` only with `output: 'export'`; decide at Phase 6 (needs owner approval).
 
