@@ -35,18 +35,6 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: 'modular-ui-component-library',
-    title: 'Modular UI Component Library (Open Source)',
-    summary:
-      'A copy-and-paste custom UI component library for clean, minimal interfaces without bundle bloat.',
-    role: 'TODO(owner): role on this project',
-    stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-    status: 'in-progress',
-    links: {
-      // TODO(owner): repo and live URL once published (old site had '#' placeholders).
-    },
-  },
-  {
     slug: 'dsa-visualization',
     title: 'DSA Visualization',
     summary:

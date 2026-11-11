@@ -12,8 +12,6 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
-    // Old Vite/React app kept for reference; not linted:
-    "legacy/**",
     // Old Vite production build output (gitignored artifact):
     "dist/**",
   ]),

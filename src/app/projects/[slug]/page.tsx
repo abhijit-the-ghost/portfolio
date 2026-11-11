@@ -52,7 +52,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
   const cs = caseStudyFor(slug);
 
   return (
-    <article className="px-6 py-16 md:py-24">
+    <article className="px-6 py-16">
       <div className="mx-auto max-w-5xl">
         <Link href="/#projects" className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-text">
           ← All work

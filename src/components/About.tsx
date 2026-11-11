@@ -3,7 +3,7 @@ import { Building2, Cpu, Zap } from 'lucide-react';
 
 // Wording: minimal and subtle (owner). Content from legacy + owner decisions; stat tiles border/radius per spec.
 const About = () => (
-  <section id="about" className="px-6 py-16 md:py-24">
+  <section id="about" className="px-6 py-16">
     <div className="mx-auto max-w-5xl">
       <Reveal>
         <h2 className="text-2xl font-semibold tracking-tight text-text">About</h2>
@@ -23,7 +23,7 @@ const About = () => (
               <li><strong className="text-text">Build & Runtime:</strong> Vite, Bun, Node.js</li>
             </ul>
             <h3 className="pt-2 font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">What I’m building</h3>
-            <p>I’m currently designing and open-sourcing a modular, copy-and-paste UI component library aimed at helping developers build clean, minimal interfaces without adding unnecessary bundle bloat.</p>
+            <p>I’m currently building DSA Visualization — a browser-based workspace for learning data structures and algorithms through interactive visual explanations.</p>
             <p>Always open to connecting with fellow engineers, designers, and tech enthusiasts.</p>
           </div>
 
@@ -38,7 +38,7 @@ const About = () => (
             </div>
             <div className="rounded-xl border border-border bg-bg p-4">
               <h3 className="flex items-center gap-2 text-sm font-semibold text-text"><Zap className="h-4 w-4 text-accent" /> Building</h3>
-              <p className="mt-1.5 text-xs text-muted">Modular UI library — clean, minimal, copy-paste</p>
+              <p className="mt-1.5 text-xs text-muted">DSA Visualization — interactive visual explanations</p>
             </div>
           </div>
         </div>

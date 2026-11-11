@@ -43,6 +43,3 @@ dist-ssr
 
 # typescript
 *.tsbuildinfo
-
-# legacy vite build output
-legacy/dist

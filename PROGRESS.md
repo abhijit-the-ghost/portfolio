@@ -13,7 +13,7 @@ Branch: migrate/next-tsx (created, local only) Next version: **16.4.6** (Turbopa
 - [x] 6 SEO
 - [x] 7 Perf/a11y
 - [x] 8 Case studies
-- [ ] 9 Cleanup
+- [x] 9 Cleanup
 
 ## Files to convert (filled by Phase 0, leaf components first)
 
@@ -88,7 +88,15 @@ Answered 2026-11-11 (owner):
 
 ## Last report
 
-Phase 8 done 2026-11-11 — case-study JSON slots live; owner later shared DSA Visualization's README, so the project was added (live + code links verified 200; stack/summary verbatim from owner). tsc+build green; sitemap lists it. NOT pushed.
+Phase 9 done 2026-11-11 (cleanup) **plus the owner's modular→DSA-visualization reversal and §4 padding fix**:
+- legacy/ DELETED (zero runtime refs — only docs/comments mentioned it); tsconfig/eslint/.gitignore stale exclusions removed; package.json inert trustedDependencies/ignoreScripts dropped; README rewritten (stack, bun install, bun dev, build, folder layout; ⚠️ documents that deploy.yml still uploads ./dist and that output:'export' awaits owner go-ahead).
+- §4 layout spec → uniform 64px section padding (owner feedback after reviewing 1440px screenshot); all five sections + case-study page updated.
+- **Owner-requested reversal:** Modular UI Component Library REMOVED from projects (+ case-studies JSON + loader entries); About "What I'm building" + stat tile now point to DSA Visualization (owner README phrasing). DSA viz = current project.
+- **Owner's uncommitted edits left untouched and untouched by the commit:** src/app/page.tsx (About reordered above Projects) and src/content/skills.ts (TanStack Table → Core; Working knowledge expanded: Python, Django, PostgreSQL, Git, GitHub Actions, NGINX).
+- Rescue note: a PowerShell Set-Content pipeline double-encoded UTF-8 into 5 component files; recovered by git-restoring those 5 files to HEAD and re-applying the two intended edits with the edit tool. No other files affected; mojibake scan clean (no matches repo-wide).
+- Gates: tsc ✓ · build ✓ · eslint ✓. NOT pushed.
+
+PENDING: output: 'export' + deploy.yml ./dist → ./out (owner go-ahead). Owner WIP: page.tsx, skills.ts (uncommitted).
 
 PENDING OWNER DECISION (blocks deploy): output: 'export' + images.unoptimized for GitHub Pages (host: static-only — confirmed). See report for the next/image consequences. deploy.yml ./dist → ./out ready to flip on approval.
 

@@ -69,7 +69,7 @@ const ProjectCard = ({ p, delay = 0 }: Props) => {
 };
 
 const Projects = () => (
-  <section id="projects" className="px-6 py-16 md:py-24">
+  <section id="projects" className="px-6 py-16">
     <div className="mx-auto max-w-5xl">
       <Reveal>
         <h2 className="text-2xl font-semibold tracking-tight text-text">Projects</h2>

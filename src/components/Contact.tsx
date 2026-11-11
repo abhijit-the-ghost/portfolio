@@ -5,7 +5,7 @@ import { socialLinks } from '@/lib/socials';
 
 // Server component. Socials from profile.links via socialLinks (CodePen included — real handle).
 const Contact = () => (
-  <section id="contact" className="px-6 py-16 md:py-24">
+  <section id="contact" className="px-6 py-16">
     <div className="mx-auto max-w-5xl">
       <Reveal>
         <h2 className="text-2xl font-semibold tracking-tight text-text">Contact</h2>

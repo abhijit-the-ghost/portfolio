@@ -29,7 +29,7 @@ const SkillGroup = ({ title, items }: Props) => (
 );
 
 const Skills = () => (
-  <section id="skills" className="px-6 py-16 md:py-24">
+  <section id="skills" className="px-6 py-16">
     <div className="mx-auto max-w-5xl">
       <Reveal>
         <h2 className="text-2xl font-semibold tracking-tight text-text">Skills</h2>

@@ -56,7 +56,7 @@ Read this file and `PROGRESS.md` at the start of **every** task.
   - `--text: #E5E7EB`, `--muted: #9CA3AF`
   - `--accent: #22D3EE` (the only accent; owner may change this one value)
 - **Type:** one sans (Inter via `next/font`), one mono (JetBrains Mono, small labels only). Scale: 14 / 16 / 20 / 30 / 48 / 64 px; hero uses `clamp()`. Body line-height 1.6.
-- **Layout:** content `max-w-5xl`, centered, 8px spacing grid, section padding 96px desktop / 64px mobile.
+- **Layout:** content `max-w-5xl`, centered, 8px spacing grid, section padding 64px (uniform; owner decision 2026-11-11, replacing 96px desktop / 64px mobile after owner review).
 - **Radius:** 12px on cards and buttons. **Borders** 1px `--border`. No heavy shadows, no glassmorphism, no gradients except one subtle hero glow.
 - **Motion:** use Motion only for a `Reveal` wrapper: fade + 16px rise, 0.4 s, ease-out, play once, stagger 60 ms. **Respect `prefers-reduced-motion`** (no animation when set). No preloader, custom cursor, parallax, autoplay, or scroll-jacking.
 - **Accessibility:** semantic landmarks (`header`, `main`, `nav`, `footer`), one `h1` per page, visible focus ring in accent color, text contrast ≥ 4.5:1, every image has meaningful `alt`, every control works by keyboard.
