@@ -39,12 +39,15 @@ Batch A — DONE 2026-11-11 (Footer, Navbar, Skills, Projects, About):
 - [x] `src/components/About.tsx` (kind: leaf; verbatim copy; dead `motion`/`siteConfig` imports dropped)
 - UNUSED primitives NOT converted (owner chose): `components/ui/Button.jsx`, `components/Button/Button.jsx`, `components/ui/Card.jsx` — pending Q2 (delete candidate in Phase 9)
 
-Batch B:
-- [ ] `src/components/Experience.tsx`
-- [ ] `src/components/Contact.tsx`
-Batch C:
-- [ ] `src/components/Hero.tsx`
-- [ ] App.jsx-equivalent → Phase 4; index.html → Phase 4 layout
+Batch B — DONE 2026-11-11 (Experience, Contact, Hero):
+- [x] `src/components/Experience.tsx` (kind: leaf; array model; bullets flattened; `type: Full-time` + tenure string dropped — no slots)
+- [x] `src/components/Contact.tsx` (kind: leaf; mailto + location + socials from content; CodePen filtered out — TODO(owner)/Q8)
+- [x] `src/components/Hero.tsx` (kind: leaf client; framer-motion entrance kept; `next/image` fill + object-top, priority; meImage.jpg copied to src/assets/)
+- NEW `src/lib/socials.ts` — shared label→icon map + `socialLinks` (filters TODO(owner) hrefs)
+- NEW `src/assets/meImage.jpg` — copied from legacy (original kept in legacy/)
+
+Batch C — nothing left to convert (all section components done in A+B):
+- [ ] Phase 4 consumes everything above (App.jsx / index.html equivalents: `src/app/layout.tsx`, `src/app/page.tsx`)
 
 Note: temp render check page removed (`src/app/dev/`); `src/app/_dev` is a private folder in App Router and NOT routable — the 5-component smoke test was done at `/dev`. `.next/dev` cache must be cleared if a route is deleted (stale validator.ts).
 
@@ -91,7 +94,7 @@ From Phase 0 audit (see docs/MIGRATION_AUDIT.md §8 for full list):
 
 ## Last report
 
-Phase 3 batch A done 2026-11-11: Footer/Navbar/Skills/Projects/About converted (flat in src/components/); tsc+build green; `/dev` smoke test rendered all five, dev log had no hydration/console errors; temp page removed. Not pushed.
+Phase 3 batches A+B done 2026-11-11: all section components converted (Footer, Navbar, Skills, Projects, About, Experience, Contact, Hero). tsc+build green; each batch smoke-tested via `/dev` (rendered, no hydration/console errors). Unused legacy primitives deliberately unconverted. Not pushed.
 
 Correction needed in workflow: `.github/workflows/deploy.yml` still uploads `./dist` (Vite) → Next builds to `out/` only with `output: 'export'`; decide at Phase 6 (needs owner approval).
 
