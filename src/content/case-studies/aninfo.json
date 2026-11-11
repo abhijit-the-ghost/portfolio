@@ -1,0 +1,35 @@
+{
+  "context": {
+    "product": "TODO(owner): what the product is — one sentence",
+    "role": "TODO(owner): your role — e.g. Design engineer / solo / team member (and which team)",
+    "team": "TODO(owner): team composition — solo or who else worked on it",
+    "dates": "TODO(owner): start–end, e.g. Jan 2024 – Mar 2024"
+  },
+  "problemAndConstraints": "TODO(owner): the problem the product solved, and the constraints (time, platform, performance, accessibility, stack, org, etc.)",
+  "decisions": [
+    {
+      "title": "TODO(owner): decision 1 — short title",
+      "decision": "TODO(owner): what you decided and why",
+      "rejectedAlternative": "TODO(owner): the alternative you rejected",
+      "tradeoff": "TODO(owner): the tradeoff accepted"
+    },
+    {
+      "title": "TODO(owner): decision 2 — short title",
+      "decision": "TODO(owner): what you decided and why",
+      "rejectedAlternative": "TODO(owner): the alternative you rejected",
+      "tradeoff": "TODO(owner): the tradeoff accepted"
+    },
+    {
+      "title": "TODO(owner): decision 3 — optional third decision",
+      "decision": "TODO(owner): what you decided and why",
+      "rejectedAlternative": "TODO(owner): the alternative you rejected",
+      "tradeoff": "TODO(owner): the tradeoff accepted"
+    }
+  ],
+  "changesNow": [
+    "TODO(owner): one thing you would change now — and why"
+  ],
+  "evidence": [
+    "TODO(owner): evidence — screenshots, measured results (e.g. Lighthouse, build time, conversion), links to PRs or demo"
+  ]
+}

@@ -1,63 +1,59 @@
 # Abhijit Guragain — Portfolio
 
-> Frontend Engineer @Insight Workshop | React · TypeScript · Tailwind · Zustand · TanStack Query
+> Frontend Engineer @Insight Workshop | React · TypeScript · Tailwind
 
-A premium, data-driven portfolio website for a frontend engineer specializing in clean UI/UX systems, lightweight state management, and scalable web architectures. Built with Vite, React, JSX, and Tailwind CSS.
+Personal portfolio built with Next.js (App Router) and TypeScript (strict). Dark, calm design; content lives in typed TypeScript modules.
 
-## 🛠 Tech Stack
+## Stack
 
-- **Build**: Vite + npm
-- **Framework**: React (JSX)
-- **Styling**: Tailwind CSS (primary)
-- **Animation**: Framer Motion
-- **Icons**: Lucide React
-- **Data**: Centralized JSON/JS modules (`src/data/`) for projects, skills, experience, and site config
+- **Next.js 16** (App Router, Turbopack, Cache Components) · React 19
+- **TypeScript** (`strict: true`)
+- **Tailwind CSS v4** (CSS-first config in `globals.css`) + **DaisyUI v5** (registered custom dark theme; UI is hand-styled — no DaisyUI component classes)
+- **framer-motion** — only inside the `Reveal` wrapper (fade + rise, once)
+- **lucide-react** icons · `@/*` path alias → `src/*` · package manager: **bun**
 
-## 🚀 Getting Started
+## Getting started (bun)
 
 ```bash
-git clone https://github.com/abhijit-the-ghost/portfolio.git
-cd portfolio
-npm install
-npm run dev
-npm run build
+bun install      # install dependencies
+bun dev          # dev server on http://localhost:3000
+bun run build    # production build
+bun run start    # serve the production build
+bun run lint     # ESLint
+bunx tsc --noEmit
 ```
 
-## 🏗 Project Structure
+## Folder layout
 
 ```
 src/
-├── data/               # Content modules (experience, skills, projects, site)
-├── sections/           # Page sections (Hero, About, Skills, Projects, Experience, Philosophy, Contact)
-├── components/         # Reusable UI (Navbar, Button, Footer, TerminalVisual)
-├── theme/              # Theme provider (light/dark with localStorage)
-├── assets/             # Images (profile, sketches removed for clean archive)
-└── App.jsx             # Entry point with section composition
+├── app/
+│   ├── layout.tsx            # Inter + JetBrains Mono (next/font), header Navbar, footer, metadata
+│   ├── page.tsx              # / — Hero, Projects, Skills, Experience, About, Contact
+│   ├── projects/[slug]/      # case study pages (static via generateStaticParams)
+│   ├── globals.css           # Tailwind v4 + DaisyUI plugin + design tokens (§4 spec)
+│   ├── sitemap.ts, robots.ts
+│   └── opengraph-image.tsx   # generated OG card (next/og); twitter-image.tsx re-exports it
+├── components/               # Navbar, Footer, Hero, Projects, Skills, Experience, About, Contact, Reveal
+├── content/                  # single source of truth for copy — typed, never hard-coded in components
+│   ├── types.ts              # Project, SkillGroup, ExperienceItem, Profile, CaseStudy
+│   ├── profile.ts, projects.ts, skills.ts, experience.ts
+│   ├── caseStudies.ts        # loader for the case-study JSON files
+│   └── case-studies/<slug>.json   # one file per project (TODO(owner) until filled)
+├── lib/                      # site.ts (navLinks, monogram, siteUrl), socials.ts (label → icon map)
+└── assets/                   # meImage.jpg (hero portrait)
 ```
 
-## ✨ Sections
+## Content editing
 
-- **Hero** — Strong headline with interactive terminal visual
-- **About** — Bio, philosophy, and stats (3+ yrs, React/TS/Tailwind stack)
-- **Skills** — Organized tech stack (Frontend, State, Forms, Build)
-- **Projects** — Showcase cards + featured open-source library project
-- **Experience** — Insight Workshop (Mar 2023 – Present) with detailed bullet points
-- **Philosophy** — Development principles (clean code, accessibility, performance, maintainability)
-- **Contact** — Clean CTA with email, socials, and location
+All copy comes from `src/content/*.ts` — components never hard-code text. To add a project, add an entry to `projects.ts`; its case study goes into `case-studies/<slug>.json` (a slot already exists for every project).
 
-## 🔍 SEO
+## Deployment
 
-- Semantic HTML (proper heading hierarchy)
-- Meta title, description, keywords
-- Open Graph + Twitter Cards
-- Canonical URL + robots meta
-- Schema.org `Person` structured data
-- `lang="en"`, alt text, visible focus states, `prefers-reduced-motion` support
+GitHub Pages via `.github/workflows/deploy.yml` (push to `main` → bun install --frozen-lockfile → `bun run build` → deploy artifact).
 
-## 📄 License
+> ⚠️ The workflow currently uploads `./dist` (Vite artifact). Next.js static export writes `./out`, and switching requires `output: 'export'` in `next.config.ts` plus `images.unoptimized: true` (GitHub Pages has no image-optimization server). **Not enabled — needs the owner's explicit go-ahead.**
 
-MIT — feel free to use for your own portfolio.
+## License
 
----
-
-*Updated to match the premium developer portfolio spec: minimal, intentional design with data-driven content, no generative-AI placeholders, no fabricated history.*
+MIT — feel free to use as reference.

@@ -1,0 +1,35 @@
+{
+  "context": {
+    "product": "A browser-based workspace for learning data structures and algorithms through interactive visual explanations.",
+    "role": "TODO(owner): your role (your README reads like a solo project — confirm)",
+    "team": "TODO(owner): team composition — solo or who else works on it",
+    "dates": "TODO(owner): start–end, e.g. Jan 2026 – Present"
+  },
+  "problemAndConstraints": "TODO(owner): the problem this project solves and its constraints (audience, platform, stack, timeline)",
+  "decisions": [
+    {
+      "title": "Immutable frames from pure algorithm functions",
+      "decision": "Bubble Sort and Insertion Sort generate immutable frames from pure algorithm functions, with the matching source-code line highlighted and playback controls over manual stepping.",
+      "rejectedAlternative": "TODO(owner): the alternative you rejected",
+      "tradeoff": "TODO(owner): the tradeoff you accepted"
+    },
+    {
+      "title": "Tailwind CSS 4 with DaisyUI v5 themes",
+      "decision": "Tailwind CSS 4 with all DaisyUI v5 themes enabled; a persisted theme controller switches themes and stores the selection in localStorage.",
+      "rejectedAlternative": "TODO(owner): the alternative you rejected",
+      "tradeoff": "TODO(owner): the tradeoff you accepted"
+    },
+    {
+      "title": "React Compiler",
+      "decision": "React Compiler enabled via the Vite React/Babel configuration, instead of relying on manual memoization.",
+      "rejectedAlternative": "TODO(owner): the alternative you rejected (manual memoization?)",
+      "tradeoff": "TODO(owner): the tradeoff you accepted"
+    }
+  ],
+  "changesNow": [
+    "TODO(owner): one thing you would change now — and why (your README lists current limits: no Searching/Tree/Graph modules, local-only visualization state, no automated tests)"
+  ],
+  "evidence": [
+    "TODO(owner): evidence — screenshots, measured results (e.g. Lighthouse, bundle size, learner feedback), links to docs or build output"
+  ]
+}
