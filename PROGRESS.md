@@ -6,7 +6,7 @@ Branch: migrate/next-tsx (created, local only) Next version: **16.4.6** (Turbopa
 
 - [x] 0 Audit
 - [x] 1 Scaffold
-- [ ] 2 Types/content
+- [x] 2 Types/content
 - [ ] 3 Components
 - [ ] 4 Pages
 - [ ] 5 Design
@@ -17,15 +17,17 @@ Branch: migrate/next-tsx (created, local only) Next version: **16.4.6** (Turbopa
 
 ## Files to convert (filled by Phase 0, leaf components first)
 
-### Phase 2 — utils / data → TS (max 5 files per batch)
+### Phase 2 — utils / data → TS (max 5 files per batch) — DONE 2026-11-11
 
-- [ ] `src/lib/site.js` → `src/lib/site.ts` — leaf data (siteConfig + navLinks); FIRST reconcile with src/data/site.js (dup)
-- [ ] `src/data/site.js` → merge into site.ts, drop duplicate (owner Q3)
-- [ ] `src/data/projects.js` → `src/content/projects.ts` — 2 projects + unused featuredProject (owner Q6)
-- [ ] `src/data/skills.js` → `src/content/skills.ts` — levels → tiered Core/Working model (owner Q4)
-- [ ] `src/data/experience.js` → `src/content/experience.ts` — 1 entry (Insight Workshop, Mar 2023–Present)
+- [x] `src/lib/site.js` → `src/lib/site.ts` — NavLink type, navLinks + monogram (merged the two legacy duplicates)
+- [x] `src/data/site.js` — merged into profile.ts / site.ts (dropped duplicate; bioShort kept in profile.ts)
+- [x] `src/data/projects.js` → `src/content/projects.ts` — 2 live + 1 in-progress (featuredProject), TODOs inside
+- [x] `src/data/skills.js` → `src/content/skills.ts` — Core: React, TS, Next.js, Tailwind, TanStack Query, Zustand, RHF, Zod; Working: JavaScript, Vite, Bun, Node.js (owner-confirmed)
+- [x] `src/data/experience.js` → `src/content/experience.ts` — 1 entry; single bucket pending owner split (TODO)
 - [ ] SKIP `src/data/terminal.js` (dead code — delete, don't convert)
 - [ ] SKIP `src/theme/ThemeProvider.jsx` (owner Q1: drop with light/dark theme system)
+
+New files: `src/content/{types.ts, profile.ts, projects.ts, skills.ts, experience.ts}` — `bioShort` exported from profile.ts (not in Profile type; note in report).
 
 ### Phase 3 — components → TSX (leaf first, ~5 per batch)
 
@@ -91,7 +93,7 @@ From Phase 0 audit (see docs/MIGRATION_AUDIT.md §8 for full list):
 
 ## Last report
 
-Phase 1 (scaffold) done 2026-11-11: Next 16.4.6 + Tailwind v4 + DaisyUI v5 wired, old app in legacy/, gates green (tsc, eslint, build, dev+curl "Migration in progress" ×2). NOT pushed.
+Phase 2 (types/content) done 2026-11-11: src/content/{types,profile,projects,skills,experience}.ts + src/lib/site.ts; 2 batches (ba8bb21, f0ca880), tsc green after each. TODOs left in files for owner: CodePen URL, aninfo github link, Insight Workshop project bucket, role fields, TanStack Table confirmation, featuredProject challenges/features dropped.
 
 Correction needed in workflow: `.github/workflows/deploy.yml` still uploads `./dist` (Vite) → Next builds to `out/` only with `output: 'export'`; decide at Phase 6 (needs owner approval).
 
