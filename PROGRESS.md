@@ -31,24 +31,22 @@ New files: `src/content/{types.ts, profile.ts, projects.ts, skills.ts, experienc
 
 ### Phase 3 — components → TSX (leaf first, ~5 per batch)
 
-Batch A (small leaf components):
-- [ ] `src/components/ui/Button.jsx` (kind: leaf; UNUSED — owner Q2: convert or delete)
-- [ ] `src/components/Button/Button.jsx` (kind: leaf; UNUSED — owner Q2)
-- [ ] `src/components/ui/Card.jsx` (kind: leaf; UNUSED, framer-motion; owner Q2)
-- [ ] `src/components/Footer/Footer.jsx` (kind: leaf; needs 'use client': window.scrollTo; new Date().getFullYear() → build-time)
-- [ ] `src/components/Navbar/Navbar.jsx` (kind: client; useState/useEffect, window scroll, framer-motion AnimatePresence; dead `scrolled` state)
+Batch A — DONE 2026-11-11 (Footer, Navbar, Skills, Projects, About):
+- [x] `src/components/Footer.tsx` (kind: leaf client; window.scrollTo handler; YEAR as build-time module const)
+- [x] `src/components/Navbar.tsx` (kind: client; useState/useEffect, Motion; DEAD `scrolled` state + scroll effect REMOVED)
+- [x] `src/components/Skills.tsx` (kind: leaf; tiered Core/Working render; owner WIP `px-6` removal applied — stash@{0} still kept)
+- [x] `src/components/Projects.tsx` (kind: leaf; in-progress card renders as non-anchor + "In progress" chip; no invented URLs; role not rendered)
+- [x] `src/components/About.tsx` (kind: leaf; verbatim copy; dead `motion`/`siteConfig` imports dropped)
+- UNUSED primitives NOT converted (owner chose): `components/ui/Button.jsx`, `components/Button/Button.jsx`, `components/ui/Card.jsx` — pending Q2 (delete candidate in Phase 9)
 
-Batch B (sections, leaf):
-- [ ] `src/sections/Skills.jsx` (kind: leaf; internal SkillGroup; stash@{0} holds uncommitted WIP)
-- [ ] `src/sections/Projects.jsx` (kind: leaf; internal ProjectCard; external links)
-- [ ] `src/sections/About.jsx` (kind: leaf; unused motion import)
-- [ ] `src/sections/Experience.jsx` (kind: leaf)
-- [ ] `src/sections/Contact.jsx` (kind: leaf; inline CodePen SVG; codepen placeholder link — owner Q8)
-
+Batch B:
+- [ ] `src/components/Experience.tsx`
+- [ ] `src/components/Contact.tsx`
 Batch C:
-- [ ] `src/sections/Hero.jsx` (kind: leaf; meImage.jpg → next/image; framer-motion entrance; imports lib/site)
-- [ ] `src/App.jsx` (layout/root — consumed by Phase 4 layout/page, not converted as a component)
-- [ ] `index.html` (entry — replaced by src/app/layout.tsx in Phase 4; pre-paint theme script dropped per dark-only spec)
+- [ ] `src/components/Hero.tsx`
+- [ ] App.jsx-equivalent → Phase 4; index.html → Phase 4 layout
+
+Note: temp render check page removed (`src/app/dev/`); `src/app/_dev` is a private folder in App Router and NOT routable — the 5-component smoke test was done at `/dev`. `.next/dev` cache must be cleared if a route is deleted (stale validator.ts).
 
 Empty `src/components/SectionHeading/` — delete or ignore.
 NOT imported anywhere (delete candidates, don't convert): `src/App.css`, `src/assets/react.svg`, `public/vite.svg`.
@@ -93,7 +91,7 @@ From Phase 0 audit (see docs/MIGRATION_AUDIT.md §8 for full list):
 
 ## Last report
 
-Phase 2 (types/content) done 2026-11-11: src/content/{types,profile,projects,skills,experience}.ts + src/lib/site.ts; 2 batches (ba8bb21, f0ca880), tsc green after each. TODOs left in files for owner: CodePen URL, aninfo github link, Insight Workshop project bucket, role fields, TanStack Table confirmation, featuredProject challenges/features dropped.
+Phase 3 batch A done 2026-11-11: Footer/Navbar/Skills/Projects/About converted (flat in src/components/); tsc+build green; `/dev` smoke test rendered all five, dev log had no hydration/console errors; temp page removed. Not pushed.
 
 Correction needed in workflow: `.github/workflows/deploy.yml` still uploads `./dist` (Vite) → Next builds to `out/` only with `output: 'export'`; decide at Phase 6 (needs owner approval).
 
