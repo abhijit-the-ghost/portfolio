@@ -75,26 +75,18 @@ NOT imported anywhere (delete candidates, don't convert): `src/App.css`, `src/as
 
 ## Open questions for owner
 
-From Phase 0 audit (see docs/MIGRATION_AUDIT.md §8 for full list):
-
-- Q1. Drop the light/dark theme system entirely (dark-only target)? (ThemeProvider.jsx, pre-paint script, .dark CSS vars)
-- Q2. Dead code: delete or convert? (ui/Button, ui/Card, Button/Button, App.css, terminal.js, react.svg, vite.svg, empty SectionHeading/)
-- Q3. lib/site.js vs data/site.js — merge into one siteConfig? (Footer imports data/site, everyone else lib/site)
-- Q4. Skills model: levels → Core/Working tiers; does Next.js go in Core on day one? Is TanStack Table (AGENTS §5 Core) left out until used?
-- Q5. About copy uses "high-performance"/"meticulous" — keep verbatim in Phase 2?
-- Q6. featuredProject ("Modular UI Component Library", links '#') — include on / with TODO(owner) links, or hold until finished?
-- Q7. aninfo project's github link points to lofi-digital-clock repo — correct URL?
-- Q8. CodePen link "your-profile" — real handle or drop the CodePen icon?
-- Q9. og-image.png referenced in meta but missing — supply one or drop og:image?
-- Q10. Canonical = www.abhijitguragain.com.np (apex redirects there) — confirm for Phase 6?
-- Q11. GitHub Pages is static → Phase 6: output: 'export' + images.unoptimized: true?
-- Q12. "Based in Kathmandu" (hero) vs "Bhanimandal-04 Lalitpur" (experience) — keep both?
-- Q13. LISDR (Government of Nepal) — anything to publish, or leave out?
-- deploy.yml: change artifact path ./dist → ./out when static export lands? (Needed for Pages deploys post-merge.)
+Answered 2026-11-11 (owner):
+- Q1. Theme: owner APPROVED the new dark theme tokens for Phase 5 — "Update the css theme to new one, if i dont like that i will tell you to update that." Proceed; owner will veto after seeing it.
+- Q2. Unused primitives (ui/Button, Button/Button, ui/Card): "wait for its designated phase" → keep unconverted; decide in Phase 9 cleanup.
+- Q3. Experience buckets: project names must stay generic — **Digital Registry / Learning Management System / School Management System** (names cannot be disclosed publicly). Bullets apply across all three; listed once on purpose. Bucket name set in src/content/experience.ts (not rendered yet).
+- Q4. Skills: Core = React, TypeScript, Next.js, Tailwind, TanStack Query, Zustand, React Hook Form, Zod; Working = JavaScript, Vite, Bun, Node.js (applied). TanStack Table: STILL NOT CONFIRMED — do not add yet.
+- Q5. Wording: "minimal and subtle and simple" — applied this pass (bioShort, headline "Scalable"→"Maintainable", About 3 paragraphs trimmed, experience bullets 1 & 4 trimmed).
+- Q8. CodePen REAL: https://codepen.io/Abhijit-Guragain-the-lessful — added (icon: lucide `Codepen`, deprecated-brand; revisit when lucide v1 ships).
+- Q6 (featuredProject links), Q7 (Aninfo repo link), Q9 (og-image.png), Q10 (canonical www), Q11 (output: 'export'), Q12 (Kathmandu vs Lalitpur — keep both, silent), Q13 (LISDR) — still OPEN.
 
 ## Last report
 
-Phase 3 batches A+B done 2026-11-11: all section components converted (Footer, Navbar, Skills, Projects, About, Experience, Contact, Hero). tsc+build green; each batch smoke-tested via `/dev` (rendered, no hydration/console errors). Unused legacy primitives deliberately unconverted. Not pushed.
+Phase 3 batches A+B done 2026-11-11 + owner decisions applied same day (commit after this edit): CodePen real URL wired (socials.ts iconFor + profile.ts), experience buckets renamed to Digital Registry / LMS / School Management System (bullets shared, listed once), minimal wording pass on About/profile/experience. tsc+build green. Not pushed.
 
 Correction needed in workflow: `.github/workflows/deploy.yml` still uploads `./dist` (Vite) → Next builds to `out/` only with `output: 'export'`; decide at Phase 6 (needs owner approval).
 

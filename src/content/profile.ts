@@ -7,7 +7,7 @@ export const profile: Profile = {
   name: 'Abhijit Guragain',
   title: 'Frontend Engineer @Insight Workshop',
   headline:
-    'Frontend Engineer @Insight Workshop | React, TypeScript, Tailwind | Clean UI/UX Systems, Lightweight State (Zustand), & Scalable Web Architectures',
+    'Frontend Engineer @Insight Workshop | React, TypeScript, Tailwind | Clean UI/UX Systems, Lightweight State (Zustand), & Maintainable Web Architectures',
   location: 'Kathmandu, Nepal',
   email: 'abhijitguragain546@gmail.com',
   links: [
@@ -15,11 +15,10 @@ export const profile: Profile = {
     { label: 'LinkedIn', href: 'https://linkedin.com/in/abhijit-guragain/' },
     { label: 'Instagram', href: 'https://instagram.com/ig_abhijit.4/' },
     { label: 'YouTube', href: 'https://youtube.com/@abhijitguragain8639' },
-    // TODO(owner): old site shipped a placeholder CodePen URL ('https://codepen.io/your-profile'). Confirm the real handle or remove this entry.
-    { label: 'CodePen', href: 'TODO(owner): confirm CodePen profile URL' },
+    { label: 'CodePen', href: 'https://codepen.io/Abhijit-Guragain-the-lessful' },
   ],
 };
 
 // Short bio carried over from legacy/src/data/site.js (kept; Profile type has no field for it).
 export const bioShort =
-  'Frontend Engineer with 3+ years building high-performance web apps — React, TypeScript, Tailwind, Zustand, TanStack Query.';
+  'Frontend Engineer with 3+ years building web apps — React, TypeScript, Tailwind, Zustand, TanStack Query.';
