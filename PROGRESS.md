@@ -56,6 +56,7 @@ NOT imported anywhere (delete candidates, don't convert): `src/App.css`, `src/as
 
 ## Decisions
 
+- **dsa-visualization added to the portfolio** (owner-posted DSA README, 2026-11-11): project entry `slug: 'dsa-visualization'`, status `'live'` (repo 200, site 200, verified), stack from owner's README (React, TypeScript, Vite, Tailwind CSS, DaisyUI), summary verbatim from README, live + code links (both owner-supplied), role TODO(owner). Case-study JSON added (`src/content/case-studies/dsa-visualization.json`) with only README-sourced decisions (immutable frames/pure algos, Tailwind 4 + DaisyUI v5 themes, React Compiler); everything else TODO(owner). If owner prefers `in-progress` over `live`, flip one word in src/content/projects.ts.
 - **Phase 1 done (2026-11-11):** Next.js **16.4.6** scaffolded (Turbopack, cacheComponents + partialPrefetching enabled by scaffold defaults — revisit at Phase 6 with static-export question). React bumped 19.2.0 → 19.3.0 by scaffold. Tailwind **4.3.3** (@tailwindcss/turbopack, CSS-first) + **daisyui 5.7.50** (devDep). `legacy/` holds the old Vite app (git mv, public/ stays at root). `package-lock.json` removed as approved. **bun was not installed on this machine** — owner approved `npm install -g bun` (bun 1.4.4). bun.lock committed; CI `--frozen-lockfile` will work.
 - `_scaffold` in phase.md/agents.md fails create-next-app (npm naming: no leading underscore) → scaffold was done in `scaffold-tmp` (owner-approved). phase.md should be updated.
 - layout.tsx uses `ReactNode` children typing instead of Next 16's generated `LayoutProps<"/">` global (needs `.next/types` from a build; fails fresh-clone `tsc`).
@@ -87,7 +88,7 @@ Answered 2026-11-11 (owner):
 
 ## Last report
 
-Phase 8 done 2026-11-11 — owner has NO case-study material yet; shipped the JSON slot instead (as requested): new types (CaseStudy/CaseStudyDecision), `src/content/case-studies/{lofi-digital-clock,aninfo,modular-ui-component-library}.json` (template skeletons, every unknown = TODO(owner), stack/links facts reused from content), `src/content/caseStudies.ts` loader, [slug] page renders Context / Problem & constraints / Key decisions (with rejected alternative + tradeoff) / What I would change now / Evidence. Pages currently show TODO(owner) markers until owner fills the JSONs; JSON fill-in is pure content work, no code needed. tsc+build green; sitemap lists all tracks. NOT pushed.
+Phase 8 done 2026-11-11 — case-study JSON slots live; owner later shared DSA Visualization's README, so the project was added (live + code links verified 200; stack/summary verbatim from owner). tsc+build green; sitemap lists it. NOT pushed.
 
 PENDING OWNER DECISION (blocks deploy): output: 'export' + images.unoptimized for GitHub Pages (host: static-only — confirmed). See report for the next/image consequences. deploy.yml ./dist → ./out ready to flip on approval.
 

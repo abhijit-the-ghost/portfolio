@@ -46,4 +46,17 @@ export const projects: Project[] = [
       // TODO(owner): repo and live URL once published (old site had '#' placeholders).
     },
   },
+  {
+    slug: 'dsa-visualization',
+    title: 'DSA Visualization',
+    summary:
+      'A browser-based workspace for learning data structures and algorithms through interactive visual explanations.',
+    role: 'TODO(owner): role on this project',
+    stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'DaisyUI'],
+    status: 'live',
+    links: {
+      live: 'https://dsa-visualization-delta.vercel.app/',
+      code: 'https://github.com/abhijit-the-ghost/dsa-visualization',
+    },
+  },
 ];
