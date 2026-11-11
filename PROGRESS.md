@@ -12,7 +12,7 @@ Branch: migrate/next-tsx (created, local only) Next version: **16.4.6** (Turbopa
 - [x] 5 Design
 - [x] 6 SEO
 - [x] 7 Perf/a11y
-- [ ] 8 Case studies
+- [x] 8 Case studies
 - [ ] 9 Cleanup
 
 ## Files to convert (filled by Phase 0, leaf components first)
@@ -87,7 +87,7 @@ Answered 2026-11-11 (owner):
 
 ## Last report
 
-Phase 7 done 2026-11-11: measured with Edge as Lighthouse 13.6.0 via bunx (ephemeral, no dep added). Final (3 post-fix runs, mobile): performance 82/85/83, accessibility 100, best-practices 100, seo 100. Fixes applied: WCAG 2.5.3 monogram aria-label, removed framer-motion from Navbar (plain conditional render), Reveal → LazyMotion+domAnimation (unused JS 76→52 KiB). Target ≥90 perf NOT met — LCP 3.0s driven by framework runtime + 249KB hero jpg on simulated mobile CPU; remaining levers would violate the fixed design spec. CLS 0. Dev log clean. NOT pushed.
+Phase 8 done 2026-11-11 — owner has NO case-study material yet; shipped the JSON slot instead (as requested): new types (CaseStudy/CaseStudyDecision), `src/content/case-studies/{lofi-digital-clock,aninfo,modular-ui-component-library}.json` (template skeletons, every unknown = TODO(owner), stack/links facts reused from content), `src/content/caseStudies.ts` loader, [slug] page renders Context / Problem & constraints / Key decisions (with rejected alternative + tradeoff) / What I would change now / Evidence. Pages currently show TODO(owner) markers until owner fills the JSONs; JSON fill-in is pure content work, no code needed. tsc+build green; sitemap lists all tracks. NOT pushed.
 
 PENDING OWNER DECISION (blocks deploy): output: 'export' + images.unoptimized for GitHub Pages (host: static-only — confirmed). See report for the next/image consequences. deploy.yml ./dist → ./out ready to flip on approval.
 

@@ -31,3 +31,18 @@ export type Profile = {
   email: string;
   links: { label: string; href: string }[];
 };
+
+export type CaseStudyDecision = {
+  title: string;
+  decision: string;
+  rejectedAlternative: string;
+  tradeoff: string;
+};
+
+export type CaseStudy = {
+  context: { product: string; role: string; team: string; dates: string };
+  problemAndConstraints: string;
+  decisions: CaseStudyDecision[];
+  changesNow: string[];
+  evidence: string[];
+};
