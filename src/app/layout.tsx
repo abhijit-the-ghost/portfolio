@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-const defaultTitle = `${profile.name} — Frontend Engineer`;
+const defaultTitle = `${profile.name} — Frontend Engineer · React, TypeScript, Zustand`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
