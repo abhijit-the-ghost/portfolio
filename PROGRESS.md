@@ -1,11 +1,11 @@
 # PROGRESS
 
-Branch: migrate/next-tsx (not created yet) Next version: (unknown) Hosting: GitHub Pages custom domain → **https://www.abhijitguragain.com.np/** (apex https://abhijitguragain.com.np/ 301s to www; no basePath needed; decided 2026-11-11)
+Branch: migrate/next-tsx (created, local only) Next version: **16.4.6** (Turbopack) Hosting: GitHub Pages custom domain → **https://www.abhijitguragain.com.np/** (apex https://abhijitguragain.com.np/ 301s to www; no basePath needed; decided 2026-11-11)
 
 ## Phases
 
 - [x] 0 Audit
-- [ ] 1 Scaffold
+- [x] 1 Scaffold
 - [ ] 2 Types/content
 - [ ] 3 Components
 - [ ] 4 Pages
@@ -53,6 +53,12 @@ NOT imported anywhere (delete candidates, don't convert): `src/App.css`, `src/as
 
 ## Decisions
 
+- **Phase 1 done (2026-11-11):** Next.js **16.4.6** scaffolded (Turbopack, cacheComponents + partialPrefetching enabled by scaffold defaults — revisit at Phase 6 with static-export question). React bumped 19.2.0 → 19.3.0 by scaffold. Tailwind **4.3.3** (@tailwindcss/turbopack, CSS-first) + **daisyui 5.7.50** (devDep). `legacy/` holds the old Vite app (git mv, public/ stays at root). `package-lock.json` removed as approved. **bun was not installed on this machine** — owner approved `npm install -g bun` (bun 1.4.4). bun.lock committed; CI `--frozen-lockfile` will work.
+- `_scaffold` in phase.md/agents.md fails create-next-app (npm naming: no leading underscore) → scaffold was done in `scaffold-tmp` (owner-approved). phase.md should be updated.
+- layout.tsx uses `ReactNode` children typing instead of Next 16's generated `LayoutProps<"/">` global (needs `.next/types` from a build; fails fresh-clone `tsc`).
+- `dist/` (old Vite build output on disk) added to ESLint globalIgnores — it sourced all 1155 lint problems. Not deleted (ask first).
+- tsconfig: `strict: true` (scaffold default) + exclude `legacy`; eslint ignores `legacy/**`.
+- `next-env.d.ts` committed (scaffold gitignores it; committing keeps `bunx tsc --noEmit` green on fresh clones).
 - Hosting: GitHub Pages via `.github/workflows/deploy.yml` (push to `main` → bun install → bun run build → upload `./dist` → deploy-pages). Custom domain serves at root; Vite `base: '/'` was correct.
 - Canonical host for Phase 6 metadata: `https://www.abhijitguragain.com.np/` (apex redirects there). `output: 'export'` almost certain (Pages is static) — owner confirmation + `next/image` consequences to be handled at Phase 6 before changing anything.
 - `deploy.yml` uploads `./dist`; Next static export writes `out/`. The workflow path must change when static export is enabled — needs owner approval (do not touch until confirmed).
@@ -85,7 +91,9 @@ From Phase 0 audit (see docs/MIGRATION_AUDIT.md §8 for full list):
 
 ## Last report
 
-Phase 0 (audit) done 2026-11-11: `docs/MIGRATION_AUDIT.md` written; conversion checklist added; 13 open questions for owner. No code changed.
+Phase 1 (scaffold) done 2026-11-11: Next 16.4.6 + Tailwind v4 + DaisyUI v5 wired, old app in legacy/, gates green (tsc, eslint, build, dev+curl "Migration in progress" ×2). NOT pushed.
+
+Correction needed in workflow: `.github/workflows/deploy.yml` still uploads `./dist` (Vite) → Next builds to `out/` only with `output: 'export'`; decide at Phase 6 (needs owner approval).
 
 Setup (before Phase 0):
 - Setup files committed as `b0f0763` on `migrate/next-tsx` (local only)
