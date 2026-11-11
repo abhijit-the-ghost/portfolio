@@ -4,7 +4,7 @@ Branch: migrate/next-tsx (not created yet) Next version: (unknown) Hosting: GitH
 
 ## Phases
 
-- [ ] 0 Audit
+- [x] 0 Audit
 - [ ] 1 Scaffold
 - [ ] 2 Types/content
 - [ ] 3 Components
@@ -17,7 +17,39 @@ Branch: migrate/next-tsx (not created yet) Next version: (unknown) Hosting: GitH
 
 ## Files to convert (filled by Phase 0, leaf components first)
 
-- [ ] (path) (kind) (notes)
+### Phase 2 — utils / data → TS (max 5 files per batch)
+
+- [ ] `src/lib/site.js` → `src/lib/site.ts` — leaf data (siteConfig + navLinks); FIRST reconcile with src/data/site.js (dup)
+- [ ] `src/data/site.js` → merge into site.ts, drop duplicate (owner Q3)
+- [ ] `src/data/projects.js` → `src/content/projects.ts` — 2 projects + unused featuredProject (owner Q6)
+- [ ] `src/data/skills.js` → `src/content/skills.ts` — levels → tiered Core/Working model (owner Q4)
+- [ ] `src/data/experience.js` → `src/content/experience.ts` — 1 entry (Insight Workshop, Mar 2023–Present)
+- [ ] SKIP `src/data/terminal.js` (dead code — delete, don't convert)
+- [ ] SKIP `src/theme/ThemeProvider.jsx` (owner Q1: drop with light/dark theme system)
+
+### Phase 3 — components → TSX (leaf first, ~5 per batch)
+
+Batch A (small leaf components):
+- [ ] `src/components/ui/Button.jsx` (kind: leaf; UNUSED — owner Q2: convert or delete)
+- [ ] `src/components/Button/Button.jsx` (kind: leaf; UNUSED — owner Q2)
+- [ ] `src/components/ui/Card.jsx` (kind: leaf; UNUSED, framer-motion; owner Q2)
+- [ ] `src/components/Footer/Footer.jsx` (kind: leaf; needs 'use client': window.scrollTo; new Date().getFullYear() → build-time)
+- [ ] `src/components/Navbar/Navbar.jsx` (kind: client; useState/useEffect, window scroll, framer-motion AnimatePresence; dead `scrolled` state)
+
+Batch B (sections, leaf):
+- [ ] `src/sections/Skills.jsx` (kind: leaf; internal SkillGroup; stash@{0} holds uncommitted WIP)
+- [ ] `src/sections/Projects.jsx` (kind: leaf; internal ProjectCard; external links)
+- [ ] `src/sections/About.jsx` (kind: leaf; unused motion import)
+- [ ] `src/sections/Experience.jsx` (kind: leaf)
+- [ ] `src/sections/Contact.jsx` (kind: leaf; inline CodePen SVG; codepen placeholder link — owner Q8)
+
+Batch C:
+- [ ] `src/sections/Hero.jsx` (kind: leaf; meImage.jpg → next/image; framer-motion entrance; imports lib/site)
+- [ ] `src/App.jsx` (layout/root — consumed by Phase 4 layout/page, not converted as a component)
+- [ ] `index.html` (entry — replaced by src/app/layout.tsx in Phase 4; pre-paint theme script dropped per dark-only spec)
+
+Empty `src/components/SectionHeading/` — delete or ignore.
+NOT imported anywhere (delete candidates, don't convert): `src/App.css`, `src/assets/react.svg`, `public/vite.svg`.
 
 ## Decisions
 
@@ -34,14 +66,28 @@ Branch: migrate/next-tsx (not created yet) Next version: (unknown) Hosting: GitH
 
 ## Open questions for owner
 
-- `deploy.yml`: change artifact path `./dist` → `./out` when static export lands? (Needed for Pages deploys to work after migration merges to main.)
-- LISDR (Government of Nepal) content — needs owner confirmation before it appears anywhere (AGENTS.md §5).
-- Apex vs www: apex currently redirects to www — confirm www is the canonical we put in metadata/sitemap/canonical URLs.
+From Phase 0 audit (see docs/MIGRATION_AUDIT.md §8 for full list):
+
+- Q1. Drop the light/dark theme system entirely (dark-only target)? (ThemeProvider.jsx, pre-paint script, .dark CSS vars)
+- Q2. Dead code: delete or convert? (ui/Button, ui/Card, Button/Button, App.css, terminal.js, react.svg, vite.svg, empty SectionHeading/)
+- Q3. lib/site.js vs data/site.js — merge into one siteConfig? (Footer imports data/site, everyone else lib/site)
+- Q4. Skills model: levels → Core/Working tiers; does Next.js go in Core on day one? Is TanStack Table (AGENTS §5 Core) left out until used?
+- Q5. About copy uses "high-performance"/"meticulous" — keep verbatim in Phase 2?
+- Q6. featuredProject ("Modular UI Component Library", links '#') — include on / with TODO(owner) links, or hold until finished?
+- Q7. aninfo project's github link points to lofi-digital-clock repo — correct URL?
+- Q8. CodePen link "your-profile" — real handle or drop the CodePen icon?
+- Q9. og-image.png referenced in meta but missing — supply one or drop og:image?
+- Q10. Canonical = www.abhijitguragain.com.np (apex redirects there) — confirm for Phase 6?
+- Q11. GitHub Pages is static → Phase 6: output: 'export' + images.unoptimized: true?
+- Q12. "Based in Kathmandu" (hero) vs "Bhanimandal-04 Lalitpur" (experience) — keep both?
+- Q13. LISDR (Government of Nepal) — anything to publish, or leave out?
+- deploy.yml: change artifact path ./dist → ./out when static export lands? (Needed for Pages deploys post-merge.)
 
 ## Last report
 
-Setup complete (no phase started yet):
-- git tree clean except untracked `agents.md`, `phase.md`, `PROGRESS.md`, `docs/.gitkeep`
-- `src/sections/Skills.jsx` stashed
+Phase 0 (audit) done 2026-11-11: `docs/MIGRATION_AUDIT.md` written; conversion checklist added; 13 open questions for owner. No code changed.
+
+Setup (before Phase 0):
+- Setup files committed as `b0f0763` on `migrate/next-tsx` (local only)
+- `src/sections/Skills.jsx` stashed (`stash@{0}`)
 - AGENTS.md §2 updated for Tailwind v4 + DaisyUI v5
-- Hosting + canonical domain identified via live probe
